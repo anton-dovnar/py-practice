@@ -19,4 +19,4 @@ for key, val in types.items():
         if k % 5 == 0:
             print('\n\t\t', end="")
         print(f'{CBOLD}{v}{CEND}', end=", ")
-    print()
+    print('\n')
