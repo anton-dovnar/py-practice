@@ -4,9 +4,6 @@ import tkinter as tk
 import numpy as np
 from PIL import Image, ImageTk
 
-RESTART_DELAY = 2
-
-
 BASE_DIR = pathlib.Path.cwd()
 alien_img = Image.open(
     BASE_DIR.joinpath('alien.png')).resize((128, 128), Image.ANTIALIAS)
@@ -39,7 +36,6 @@ class TicTacToe:
 
         self.draw = False
         self.winner = None
-        self.restart_timer = None
 
         self.alien_score = 0
         self.skeleton_score = 0
