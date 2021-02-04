@@ -1,0 +1,12 @@
+{
+
+    "python.pythonPath": "/home/fode4cun/.local/share/virtualenvs/gamechanger-VlOEQdn1/bin/python3.8",
+    "python.venvPath": "/home/fode4cun/.local/share/virtualenvs/",
+    "reportGeneralTypeIssues": "none",
+    "executionEnvironments": [
+        {
+            "root": "./",
+            "venv": "gamechanger-VlOEQdn1"
+        }
+    ]
+}

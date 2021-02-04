@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from io import SEEK_END, SEEK_SET, BytesIO
+
 import requests
-from io import BytesIO, SEEK_SET, SEEK_END
+
 
 class ResponseStream(object):
     def __init__(self, request_iterator):
