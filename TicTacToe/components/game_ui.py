@@ -1,5 +1,6 @@
 import pathlib
 import tkinter as tk
+from dataclasses import dataclass
 from tkinter import CENTER, FLAT, NW, Button
 
 import numpy as np
@@ -18,23 +19,25 @@ LGY = '#f2ebd3'
 LGR = '#f2d3da'
 
 
+@dataclass
 class Ui:
-    def __init__(self, board_size=600):
-        self.root = tk.Tk()
-        self.root.resizable(False, False)
-        self.root.title('Tic-Tac-Toe')
-        self.root.configure(background=CYAN)
-        self.root.bind('<Escape>', lambda e: e.widget.quit())
+    root: tk.Tk = tk.Tk()
+    root.resizable(False, False)
+    root.title('Tic-Tac-Toe')
+    root.configure(background=CYAN)
+    root.bind('<Escape>', lambda e: e.widget.quit())
 
-        self.alien = ImageTk.PhotoImage(alien_img)
-        self.skeleton = ImageTk.PhotoImage(skeleton_img)
+    alien: ImageTk.PhotoImage = ImageTk.PhotoImage(alien_img)
+    skeleton: ImageTk.PhotoImage = ImageTk.PhotoImage(skeleton_img)
 
-        self.board_size = board_size
+    board_size: int = 600
 
-        self.canvas = tk.Canvas(
-            self.root, relief=FLAT, width=board_size,
-            height=board_size, bg=CYAN
-        )
+    canvas: tk.Canvas = tk.Canvas(
+        root, relief=FLAT, width=board_size,
+        height=board_size, bg=CYAN
+    )
+
+    def __post_init__(self):
         self.menu()
         self.canvas.pack()
 

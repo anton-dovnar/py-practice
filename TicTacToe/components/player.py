@@ -1,46 +1,39 @@
 import math
 import random
+from dataclasses import dataclass
+
+import numpy as np
 
 
+@dataclass
 class Player:
-    def __init__(self, mark):
-        self.mark = mark
-
-    def get_move(self, empty_cells, instance):
-        pass
-
-
-class Human(Player):
-    def __init__(self, mark):
-        super().__init__(mark)
+    mark: int
 
 
 class RandomComputer(Player):
-    def __init__(self, mark):
-        super().__init__(mark)
 
-    def get_move(self, empty_cells, instance):
+    def get_move(self, empty_cells: np.ndarray, instance: object) -> np.ndarray:
         move = random.choice(empty_cells)
         return move
 
 
 class SmartComputer(Player):
-    def __init__(self, mark):
-        super().__init__(mark)
 
-    def get_move(self, empty_cells, instance):
+    def get_move(self, empty_cells: np.ndarray, instance: object) -> np.ndarray:
         if len(empty_cells) == 9:
             move = random.choice(empty_cells)
         else:
             move = self.minimax(instance, self.mark)['position']
+
         return move
 
-    def minimax(self, state, player):
+    def minimax(self, state: object, player: int):
         max_player = self.mark  # yourself
         other_player = 1 if player == 2 else 2
 
         # first we want to check if the previous move is a winner
         empty = len(state.get_available_moves(state.board))
+
         if state.check_winner(state.board) == other_player:
             result = {
                 'position': None,
@@ -72,4 +65,5 @@ class SmartComputer(Player):
             else:
                 if sim_score['score'] < best['score']:
                     best = sim_score
+
         return best

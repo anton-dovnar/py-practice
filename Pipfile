@@ -8,6 +8,8 @@ flake8 = "*"
 isort = "*"
 numpy = "*"
 pillow = "*"
+mypy = "*"
+pytype = "*"
 
 [dev-packages]
 

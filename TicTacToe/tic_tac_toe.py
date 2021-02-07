@@ -1,28 +1,29 @@
+import tkinter as tk
+from dataclasses import dataclass
+from typing import List
+
 import numpy as np
 from components.game_ui import Ui
 from components.player import (
-    Human,
+    Player,
     RandomComputer,
     SmartComputer,
 )
 
 
+@dataclass
 class TicTacToe(Ui):
+    board: np.ndarray = np.zeros(shape=(3, 3))
+    reset_board: bool = False
+    winner: bool = False
 
-    def __init__(self, board_size):
-        super().__init__(board_size)
+    alien_starts: bool = True
+    alien_turns: bool = True
+    computer: bool = False
 
-        self.board = np.zeros(shape=(3, 3))
-        self.reset_board = False
-        self.winner = None
-
-        self.alien_starts = True
-        self.alien_turns = True
-        self.computer = False
-
-        self.alien_score = 0
-        self.skeleton_score = 0
-        self.draw_score = 0
+    alien_score: int = 0
+    skeleton_score: int = 0
+    draw_score: int = 0
 
     def mainloop(self):
         position_right = int(self.root.winfo_screenwidth() / 2 - self.board_size / 2)
@@ -31,38 +32,38 @@ class TicTacToe(Ui):
         self.root.geometry("+{}+{}".format(position_right, position_down))
         self.root.mainloop()
 
-    def play(self, mode):
+    def play(self, mode: str):
         if mode == 'Easy':
-            self.player1 = Human(1)
+            self.player1 = Player(1)
             self.player2 = RandomComputer(2)
             self.computer = True
         elif mode == 'Unbeatable':
-            self.player1 = Human(1)
+            self.player1 = Player(1)
             self.player2 = SmartComputer(2)
             self.computer = True
         else:
-            self.player1 = Human(1)
-            self.player2 = Human(2)
+            self.player1 = Player(1)
+            self.player2 = Player(2)
 
         self.render()
 
-    def idx_to_coordinates(self, matrix_pos):
+    def idx_to_coordinates(self, matrix_pos: List[int]) -> List[int]:
         return [axis * (self.board_size // 3) + self.board_size // 6 for axis in matrix_pos]
 
-    def coordinates_to_idx(self, grid_position):
+    def coordinates_to_idx(self, grid_position: List[int]) -> List[int]:
         return [axis // (self.board_size // 3) for axis in grid_position]
 
-    def get_available_moves(self, board):
+    def get_available_moves(self, board: np.ndarray) -> np.ndarray:
         empty_cells = np.argwhere(self.board == 0)
         return empty_cells
 
-    def computer_move(self, empty_cells):
+    def computer_move(self, empty_cells: np.ndarray):
         move = self.player2.get_move(empty_cells, self)
         self.draw_skeleton((move[1], move[0]))
         self.board[move[0]][move[1]] = self.player2.mark
         self.alien_turns = not self.alien_turns
 
-    def move(self, event):
+    def move(self, event: tk.Event):
         coordinates = [event.x, event.y]
         matrix_pos = self.coordinates_to_idx(coordinates)
 
@@ -96,7 +97,7 @@ class TicTacToe(Ui):
             self.canvas.delete("all")
             self.play_again()
 
-    def check_winner(self, board):
+    def check_winner(self, board: np.ndarray):
         for i in range(board.shape[0]):
             # Horizontal
             if np.all(board[i] == board[i][0]) and board[i][0]:
@@ -132,5 +133,5 @@ class TicTacToe(Ui):
             self.computer_move(empty_cells)
 
 
-game = TicTacToe(600)
+game = TicTacToe()
 game.mainloop()
