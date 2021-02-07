@@ -48,10 +48,7 @@ class Ui:
         )
         pvp.configure(
             width=15, activebackground=LGY, relief=FLAT)
-        self.canvas.create_window(
-            ((self.board_size - 253) / 2), ((self.board_size - 237) / 2),
-            anchor=NW, window=pvp
-        )
+        self.canvas.create_window(173.5, 204, anchor=NW, window=pvp)
 
         easy_comp = Button(
             self.root, text='Easy Comp', command=lambda: self.play('Easy'),
@@ -60,7 +57,7 @@ class Ui:
         easy_comp.configure(
             width=15, activebackground=LGY, relief=FLAT)
         self.canvas.create_window(
-            ((self.board_size - 253) / 2), ((self.board_size - 143) / 2),
+            173.5, 252,
             anchor=NW, window=easy_comp
         )
 
@@ -70,10 +67,7 @@ class Ui:
         )
         smart_comp.configure(
             width=15, activebackground=LGY, relief=FLAT)
-        self.canvas.create_window(
-            ((self.board_size - 253) / 2), ((self.board_size - 48) / 2),
-            anchor=NW, window=smart_comp
-        )
+        self.canvas.create_window(173.5, 300, anchor=NW, window=smart_comp)
 
         quit = Button(
             self.root, text="Quit", command=self.root.quit,
@@ -81,10 +75,7 @@ class Ui:
         )
         quit.configure(
             width=15, activebackground=LGY, relief=FLAT)
-        self.canvas.create_window(
-            ((self.board_size - 253) / 2), ((self.board_size + 46) / 2),
-            anchor=NW, window=quit
-        )
+        self.canvas.create_window(173.5, 348, anchor=NW, window=quit)
 
     def render(self):
         self.canvas.delete("all")
