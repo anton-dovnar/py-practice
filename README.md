@@ -2,7 +2,7 @@
 
 ## :video_game: Tic Tac Toe ❌ ⭕
 
- Modes :
+Modes :
 
 * Player vs Player
 * Player vs Random Choice
