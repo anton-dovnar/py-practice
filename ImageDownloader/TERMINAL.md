@@ -1,8 +1,6 @@
-# :ocean: CLI Image Downloader :ocean:
+# CLI Image Downloader
 
 1. URL should start with: `https://`
 2. URL should end with: `.jpg, .jpeg, .png, .gif`
 3. For multiple files dowload, split them with comma: `URL, URL`
-
-![CLI Image Downloader preview](./preview/cli_image_downloader.gif "Preview")
 

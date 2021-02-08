@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
     console = Console()
 
-    with open('README.md') as readme:
+    with open('TERMINAL.md') as readme:
         markdown = Markdown(readme.read())
 
     console.print(markdown)
