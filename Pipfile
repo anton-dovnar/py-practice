@@ -12,6 +12,8 @@ mypy = "*"
 pytype = "*"
 rich = "*"
 requests = "*"
+pytube = "*"
+ffmpeg-python = "*"
 
 [dev-packages]
 
