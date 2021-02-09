@@ -28,14 +28,21 @@ class Downloader:
 
         console = Console()
 
-        table = Table(show_header=True, header_style='bold', title=f'\n[bold]{self.youtube.title}')
+        table = Table(
+            show_header=True,
+            header_style='bold',
+            title=f'\n[bold]{self.youtube.title}'
+        )
         table.add_column('Number', justify='right')
         table.add_column('Mime Type', justify='center')
         table.add_column('FPS', justify='center')
         table.add_column('Resolution', justify='center')
 
         for stream in self.streams:
-            table.add_row(f'{self.stream_number}', f'[orange1]{stream.mime_type}', f'{stream.fps}', f'[green]{stream.resolution}')
+            table.add_row(
+                f'{self.stream_number}', f'[orange1]{stream.mime_type}',
+                f'{stream.fps}', f'[green]{stream.resolution}'
+            )
             self.stream_number += 1
 
         console.print(table)
@@ -56,7 +63,8 @@ class Downloader:
     def get_stream(self, choice: int):
         self.video_stream = self.streams[choice - 1]
         mime_type_ext = self.video_stream.mime_type.split('/')[-1]
-        self.audio_stream = self.streams.filter(mime_type=f'audio/{mime_type_ext}')[0]
+        self.audio_stream = self.streams.filter(
+            mime_type=f'audio/{mime_type_ext}')[0]
 
         global file_size
         file_size = (self.video_stream.filesize + self.audio_stream.filesize) / 10**6
@@ -65,7 +73,10 @@ class Downloader:
 
     def get_permission(self, mime_type_ext: str):
         print('\n\tTitle: {0} \n\tAuthor: {1} \n\tSize: {2:.2f}MB \n\tResolution: {3} \n\tFPS: {4}'.format(
-            self.youtube.title, self.youtube.author, file_size, self.video_stream.resolution, self.video_stream.fps))
+            self.youtube.title, self.youtube.author,
+            file_size, self.video_stream.resolution,
+            self.video_stream.fps)
+        )
 
         if input('\nDo you want to continue? (yes / no)') == 'yes':
             self.download(mime_type_ext)
@@ -82,7 +93,10 @@ class Downloader:
         input_video = ffmpeg.input(video_path)
         input_audio = ffmpeg.input(audio_path)
 
-        ffmpeg.concat(input_video, input_audio, v=1, a=1).output(f'{self.youtube.title}.mp4').run()
+        ffmpeg.concat(
+            input_video, input_audio,
+            v=1, a=1
+        ).output(f'{self.youtube.title}.mp4').run()
 
     @staticmethod
     def progress(stream=None, chunk=None, remaining=None):
