@@ -1,5 +1,4 @@
 import pathlib
-from datetime import date
 from io import BytesIO
 
 import requests
@@ -29,9 +28,8 @@ def validate_url(url: str, extension: str) -> bool:
     return False
 
 
-def download(url: str, extension: str):
-    today = date.today().strftime('%d-%m-%Y')
-    file_path = BASE_DIR.joinpath('downloaded', f'{today}{extension}')
+def download(url: str, name: str):
+    file_path = BASE_DIR.joinpath('downloaded', f'{name}')
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -56,11 +54,12 @@ if __name__ == '__main__':
         urls = input('Enter URL address: ')
 
         for url in urls.split(','):
-            suffix = pathlib.PurePath(url).suffix
+            path = pathlib.PurePath(url)
+            name, suffix = path.name, path.suffix
             extension = suffix if suffix in VALID_IMAGE_EXTENSIONS else False
             valid = validate_url(url, extension)
             if valid:
-                files.append((url, extension))
+                files.append((url, name))
 
     progress = Progress(
         '[progress.description]{task.description}',
@@ -71,6 +70,6 @@ if __name__ == '__main__':
 
     with progress:
         task = progress.add_task("Downloading files...", total=len(files))
-        for image_url, extension in files:
-            download(image_url, extension)
+        for image_url, name in files:
+            download(image_url, name)
             progress.update(task, advance=1)
