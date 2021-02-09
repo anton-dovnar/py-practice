@@ -14,8 +14,8 @@ Downloading video and audio stream and merge them together into one object.
     https://music.youtube.com/
 
 
-## Installation
+## Dependencies
 
-Install **ffmpeg** for merge video and audio files:
+Install **ffmpeg** for merge video with audio:
 
     sudo apt install ffmpeg
