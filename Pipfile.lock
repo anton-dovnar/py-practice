@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "efb400d7a6fdfaf3ab3f0dd9b01b0e38aca3cdd98550c648b4ab093f8a9b0c30"
+            "sha256": "7282c80b046f66ff7617186ffb3081a757478b5e0cfc545864440ed242b45e78"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -38,6 +38,14 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==4.0.0"
+        },
+        "click": {
+            "hashes": [
+                "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a",
+                "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
+            "version": "==7.1.2"
         },
         "colorama": {
             "hashes": [
@@ -83,6 +91,14 @@
             ],
             "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==0.18.2"
+        },
+        "gtts": {
+            "hashes": [
+                "sha256:10efdecde4e272dee48ef0e8aa217de7f0bd5f914c368a92a6a14edbc0cd9cff",
+                "sha256:b53714d8377afb66df9f112158a6a832de26bc72cee3b8af321575d85f820a0f"
+            ],
+            "index": "pypi",
+            "version": "==2.2.2"
         },
         "idna": {
             "hashes": [

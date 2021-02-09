@@ -14,6 +14,7 @@ rich = "*"
 requests = "*"
 pytube = "*"
 ffmpeg-python = "*"
+gtts = "*"
 
 [dev-packages]
 
