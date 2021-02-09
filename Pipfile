@@ -15,6 +15,7 @@ requests = "*"
 pytube = "*"
 ffmpeg-python = "*"
 gtts = "*"
+kivy = {extras = ["full"], version = "*"}
 
 [dev-packages]
 
