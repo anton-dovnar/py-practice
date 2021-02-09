@@ -25,7 +25,6 @@ class Ui:
     root.resizable(False, False)
     root.title('Tic-Tac-Toe')
     root.configure(background=CYAN)
-    root.bind('<Escape>', lambda e: e.widget.quit())
 
     alien: ImageTk.PhotoImage = ImageTk.PhotoImage(alien_img)
     skeleton: ImageTk.PhotoImage = ImageTk.PhotoImage(skeleton_img)

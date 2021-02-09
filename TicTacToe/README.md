@@ -9,6 +9,6 @@ Modes :
 Hot keys:
 
 * Left Mouse Click - Move
-* Escape - Exit
+* Escape - Reset game(open main menu)
 
 ![tic-tac-toe-preview](./preview/tic_tac_toe.gif "Preview")

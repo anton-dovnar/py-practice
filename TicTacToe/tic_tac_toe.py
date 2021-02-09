@@ -33,6 +33,8 @@ class TicTacToe(Ui):
         self.root.mainloop()
 
     def play(self, mode: str):
+        self.root.bind('<Escape>', self.reset_game)
+
         if mode == 'Easy':
             self.player1 = Player(1)
             self.player2 = RandomComputer(2)
@@ -46,6 +48,14 @@ class TicTacToe(Ui):
             self.player2 = Player(2)
 
         self.render()
+
+    def reset_game(self, *args, **kwargs):
+        self.root.unbind('<Button-1>')
+        self.root.unbind('<Escape>')
+        self.canvas.delete("all")
+        self.__init__()
+        super().__init__()
+        self.board = np.zeros(shape=(3, 3))
 
     def idx_to_coordinates(self, matrix_pos: List[int]) -> List[int]:
         return [axis * (self.board_size // 3) + self.board_size // 6 for axis in matrix_pos]
