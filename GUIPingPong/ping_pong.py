@@ -1,10 +1,15 @@
 from kivy.app import App
 from kivy.clock import Clock
+from kivy.core.window import Window
 from kivy.properties import (
     NumericProperty,
     ObjectProperty,
     ReferenceListProperty,
 )
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from kivy.uix.widget import Widget
 from kivy.vector import Vector
 
@@ -39,6 +44,56 @@ class PongGame(Widget):
         self.ball.center = self.center
         self.ball.velocity = vel
 
+    def restart(self, *args):
+        self.player1.score = 0
+        self.player2.score = 0
+        self.result.dismiss()
+        Clock.schedule_interval(self.update, 1.0 / 60.0)
+
+    def exit(self, *args, **kwargs):
+        App.get_running_app().stop()
+        Window.close()
+
+    def display_winner(self, player):
+        Clock.unschedule(self.update)
+
+        # TODO Fix restart button
+
+        box = BoxLayout(orientation='vertical', padding=10)
+        box.add_widget(
+            Label(
+                text=f'Winner Player {player} \n'
+                f'Score: {self.player1.score} - {self.player2.score}',
+                font_size=20,
+                valign='center',
+                halign='center'
+            )
+        )
+        box.add_widget(
+            Button(
+                text='Restart',
+                size_hint=(1, .2),
+                font_size=20,
+                on_press=self.restart
+            )
+        )
+        box.add_widget(
+            Button(
+                text='Exit',
+                size_hint=(1, .2),
+                font_size=20,
+                on_press=self.exit
+            )
+        )
+
+        popup_window = Popup(
+            title='Game Over', title_size=30,
+            title_align='center', content=box,
+            auto_dismiss=False
+        )
+        self.result = popup_window
+        popup_window.open()
+
     def update(self, dt):
         self.ball.move()
 
@@ -50,10 +105,19 @@ class PongGame(Widget):
 
         if self.ball.x < self.x:
             self.player2.score += 1
-            self.serve_ball(vel=(4, 0))
+
+            if self.player2.score == 10:
+                self.display_winner(2)
+            else:
+                self.serve_ball(vel=(4, 0))
+
         if self.ball.x > self.width:
             self.player1.score += 1
-            self.serve_ball(vel=(-4, 0))
+
+            if self.player1.score == 10:
+                self.display_winner(1)
+            else:
+                self.serve_ball(vel=(4, 0))
 
     def on_touch_move(self, touch):
         if touch.x < self.width / 2 - 15:
