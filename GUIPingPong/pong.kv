@@ -12,7 +12,7 @@
     size: 25, 200
     canvas:
         Color:
-            rgba: (220/255, 20/255, 60/255, 1)
+            rgba: 220/255, 20/255, 60/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -24,17 +24,22 @@
 
     canvas.before:
         Color:
-            rgba: (185/255, 242/255, 255/255, 1)
+            rgba: 185/255, 242/255, 255/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
 
     canvas:
         Color:
-            rgba: (1, 1, 1, 1)
+            rgba: 1, 1, 1, 1
         Rectangle:
             pos: self.center_x - 5, 0
             size: 10, self.height
+        Line:
+            width: 3
+            rectangle: self.x, self.y, self.width, self.height
+        Line:
+            points: 0, self.center_y, self.width, self.center_y
 
     Label:
         font_size: 70
