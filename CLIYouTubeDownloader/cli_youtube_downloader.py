@@ -121,9 +121,8 @@ if __name__ == "__main__":
 
     while not valid:
         user_input = str(input("Enter the url of video: "))
-        url = validate(user_input)
 
-        if url:
+        if url := validate(user_input):
             valid = True
 
     Downloader(url)

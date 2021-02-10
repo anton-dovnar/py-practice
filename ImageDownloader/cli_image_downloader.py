@@ -57,8 +57,8 @@ if __name__ == '__main__':
             path = pathlib.PurePath(url)
             name, suffix = path.name, path.suffix
             extension = suffix if suffix in VALID_IMAGE_EXTENSIONS else False
-            valid = validate_url(url, extension)
-            if valid:
+
+            if valid := validate_url(url, extension):
                 files.append((url, name))
 
     progress = Progress(
