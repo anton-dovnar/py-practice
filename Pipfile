@@ -16,6 +16,7 @@ pytube = "*"
 ffmpeg-python = "*"
 gtts = "*"
 kivy = {extras = ["full"], version = "*"}
+opencv-python = "*"
 
 [dev-packages]
 
