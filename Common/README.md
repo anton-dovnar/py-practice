@@ -1,4 +1,9 @@
-# Common Magic
+# TOC
+
+* [Common Magic](#common-magic)
+* [Basic Typing](#basic-typing)
+
+## Common Magic
 
     __main__
     __name__
@@ -58,7 +63,7 @@
     __or__(self, other)
     __xor__(self, other)
 
-# Basic Typing
+## Basic Typing
 
     import io
     import re
