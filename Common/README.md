@@ -71,6 +71,7 @@
     from typing import (
         IO,
         Any,
+        Callable,
         Deque,
         Dict,
         Iterable,
@@ -134,3 +135,6 @@
     # Duck types: dict-like
     var_map_dict: Mapping[str, str] = {"foo": "Foo"}
     var_mutable_dict: MutableMapping[str, str] = {"bar": "Bar"}
+
+    # lambda function
+    f: Callable[[int], int] = lambda x: x * 2
