@@ -15,7 +15,10 @@ if __name__ == '__main__':
     email_pattern = re.compile(r'^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$')
     assert is_valid(email_pattern, 'hello.world@example.com') is True
 
-    # 1st group - http / https, 2nd group - domain, 3rd group - domain, 4th group - api or file
+    # 1st group - http / https
+    # 2nd group - domain
+    # 3rd group - domain
+    # 4th group - api or file
     url_pattern = re.compile(r'''^(https?:\/\/)?
                             ([\da-z\.-]+)\.
                             ([a-z\.]{2,6})
