@@ -1,4 +1,8 @@
 """
+::rotate:: number of elements to rotate
+::length:: length of the array
+Number of sets is equal to `gcd(rotate, length)`
+
 Time complexity: O(n)
 Space complexity: O(1)
 """
