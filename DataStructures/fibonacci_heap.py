@@ -1,5 +1,6 @@
 """
-Fibonacci Heap Applications
+Fibonacci Heap Applications:
+    To improve the asymptotic running time of Dijkstra's algorithm.
 Complexities:
     Insertion: O(1)
     Find Min: O(1)
