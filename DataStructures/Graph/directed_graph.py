@@ -2,7 +2,8 @@
 Implementation of a directed graph using an adjacency list
 """
 
-class Node:
+
+class Edge:
 
     def __init__(self, data, destination):
         self.data = data
@@ -11,10 +12,10 @@ class Node:
 
 class Graph:
 
-    def __init__(self, nodes, N):
+    def __init__(self, edges, N):
         self.adjecent = [[] for _ in range(N)]
 
-        for current in nodes:
+        for current in edges:
             self.adjecent[current.data].append(current.destination)
 
 
@@ -26,8 +27,8 @@ def print_graph(graph):
 
 
 if __name__ == "__main__":
-    nodes = [Node(0, 1), Node(1, 2), Node(2, 0), Node(2, 1),
-             Node(3, 2), Node(4, 5), Node(5, 4)]
+    edges = [Edge(0, 1), Edge(1, 2), Edge(2, 0), Edge(2, 1),
+             Edge(3, 2), Edge(4, 5), Edge(5, 4)]
     N = 6
-    graph = Graph(nodes, N)
+    graph = Graph(edges, N)
     print_graph(graph)
